@@ -1,0 +1,148 @@
+/* Basic Reset and Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Light grey background outside the game */
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Game Container - The main play area */
+#game-container {
+    width: 400px; /* Width of the road */
+    height: 100vh; /* Full viewport height */
+    max-height: 800px; /* Max height to prevent excessive length on tall screens */
+    background-color: #606060; /* Dark grey for the road */
+    position: relative; /* Needed for absolute positioning of children */
+    overflow: hidden; /* Hide anything that goes outside */
+    border-left: 10px dashed #ccc; /* Road edge marking */
+    border-right: 10px dashed #ccc; /* Road edge marking */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Player's Car Styling */
+#player-car {
+    width: 40px;  /* Match SVG width */
+    height: 70px; /* Match SVG height */
+    position: absolute;
+    bottom: 20px; /* Starting position from the bottom */
+    left: 50%; /* Start in the middle */
+    transform: translateX(-50%); /* Center the car precisely */
+    z-index: 10; /* Ensure player car is above road lines */
+}
+
+/* Enemy Car Styling */
+.enemy-car {
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    top: -100px; /* Start above the screen */
+    left: 50%; /* Will be randomized by JS */
+    z-index: 9; /* Below player car but above lines */
+}
+
+/* Simple SVG for enemy cars */
+.enemy-car svg {
+    display: block; /* Prevent extra space below SVG */
+}
+
+
+/* Road Lines Styling */
+.road-line {
+    width: 10px; /* Width of the dashed line */
+    height: 80px; /* Height of each dash */
+    background-color: white;
+    position: absolute;
+    left: 50%; /* Center the line */
+    transform: translateX(-50%);
+    animation: moveRoad 5s linear infinite; /* Animation name, duration, timing, iteration */
+    z-index: 1; /* Below cars */
+}
+
+/* Position the lines vertically */
+.line-1 { top: -150px; animation-delay: 0s; } /* Start line 1 immediately */
+.line-2 { top: 150px; animation-delay: -2.5s; } /* Start line 2 halfway through animation */
+.line-3 { top: 450px; animation-delay: -5s; } /* Start line 3 at the beginning again */
+
+
+/* Animation for the road lines moving downwards */
+@keyframes moveRoad {
+    0% {
+        top: -150px; /* Start above the screen */
+    }
+    100% {
+        top: 100vh; /* Move completely below the screen */
+         /* Use max-height if you want it relative to the container */
+        /* top: 800px; */
+    }
+}
+
+/* Score Display Styling */
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 20; /* Ensure score is visible */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Game Over and Start Message Styling */
+#game-over, #start-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 30; /* Above everything else */
+    border: 2px solid white;
+}
+
+#game-over h2, #start-message h2 {
+    margin-top: 0;
+    color: #ff4d4d; /* Red for Game Over */
+}
+#start-message h2 {
+    color: #4dff4d; /* Green for Start */
+}
+
+#game-over p, #start-message p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#restart-button, #start-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: black;
+    background-color: #4dff4d; /* Green button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#restart-button {
+     background-color: #ffcc00; /* Yellow button for restart */
+}
+
+
+#restart-button:hover, #start-button:hover {
+    background-color: #fff;
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}

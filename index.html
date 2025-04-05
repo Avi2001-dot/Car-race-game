@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Car Race</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div class="road-line line-1"></div>
+        <div class="road-line line-2"></div>
+        <div class="road-line line-3"></div>
+
+        <div id="player-car">
+            <svg width="40" height="70" viewBox="0 0 40 70">
+                <rect x="5" y="0" width="30" height="60" rx="5" ry="5" fill="blue"/>
+                <rect x="0" y="10" width="5" height="20" rx="2" ry="2" fill="lightblue"/>
+                <rect x="35" y="10" width="5" height="20" rx="2" ry="2" fill="lightblue"/>
+                <rect x="10" y="50" width="20" height="10" rx="3" ry="3" fill="darkblue"/>
+                 <rect x="12" y="5" width="16" height="10" fill="white" rx="2"/> </svg>
+        </div>
+
+        <div id="score">Score: 0</div>
+
+        <div id="game-over" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Your Score: <span id="final-score">0</span></p>
+            <button id="restart-button">Restart</button>
+        </div>
+
+         <div id="start-message">
+            <h2>Simple Car Race</h2>
+            <p>Use Left/Right Arrow Keys to Move</p>
+            <button id="start-button">Start Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
